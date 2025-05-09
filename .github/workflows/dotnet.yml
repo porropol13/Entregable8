@@ -22,10 +22,10 @@ jobs:
         dotnet-version: 9.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Publish
+      run: dotnet publish --configuration Release --output ./output
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.CANSINOS }}
-        publish_dir: ./wwwroot
+        publish_dir: ./output/wwwroot
